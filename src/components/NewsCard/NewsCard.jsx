@@ -18,7 +18,6 @@ const NewsCard = ({news}) => {
     others: { is_today_pick, is_trending },
     production
 } = news;
-    console.log(news);
   return (
     <>
         <div className="border border-dark7 rounded-sm overflow-hidden shadow-gray-300 hover:shadow-lg duration-300">

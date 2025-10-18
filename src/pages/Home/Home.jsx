@@ -1,24 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Container from '../../components/Container/Container'
 import AsideLeft from '../../components/AsideLeft/AsideLeft'
-import { Navigate, Outlet } from 'react-router'
+import { Outlet, useLocation, useNavigate } from 'react-router'
+import AsideRight from '../../components/AsideRight/AsideRight'
 
 const Home = () => {
+    const loaction = useLocation()
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (loaction.pathname === '/') {
+            navigate('/category/0')
+        }
+    },[loaction])
     return (
         <>
-            <Navigate to='/category/0' />
             <Container>
                 <div className="flex gap-6 justify-between">
                     <aside className="w-3/12">
                         <h4 className='text-xl text-dark2 font-semibold mb-3'>All Category</h4>
-                        <AsideLeft/>
+                        <AsideLeft />
                     </aside>
                     <div className="w-6/12">
-                        <Outlet/>
+                        <Outlet />
                     </div>
-                    <div className="w-3/12">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae libero rem dolore quos fugit quod quis natus error dolor ducimus ad rerum vel, tempore alias reiciendis ullam dignissimos vero similique molestiae consequuntur. Officiis ab quasi repudiandae similique, incidunt eius minima? Fugit maiores quos dolores ea provident eum facere quas optio.</p>
-                    </div>
+                    <aside className="w-3/12">
+                        <AsideRight/>
+                    </aside>
                 </div>
             </Container>
         </>
